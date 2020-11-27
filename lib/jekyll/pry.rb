@@ -1,4 +1,4 @@
-require "jekyll/pry/version"
+require_relative "pry/version"
 
 require "liquid"
 require "pry"
