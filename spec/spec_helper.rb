@@ -1,3 +1,6 @@
+# (c) Copyright 2020 Ribose Inc.
+#
+
 require "bundler/setup"
 require "jekyll/pry"
 

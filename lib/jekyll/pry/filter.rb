@@ -1,3 +1,6 @@
+# (c) Copyright 2020 Ribose Inc.
+#
+
 module Jekyll
   module Pry
     # +pry+ filter hooks Pry into filter chain in a Liquid template.  User can

@@ -1,3 +1,6 @@
+# (c) Copyright 2020 Ribose Inc.
+#
+
 module Jekyll
   module Pry
     # Interrupts rendering, allowing user to inspect or modify the context.
