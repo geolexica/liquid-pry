@@ -8,12 +8,36 @@ module Jekyll
     # @example
     #   {% pry %}
     class Tag < Liquid::Tag
+      attr_reader :once
+      attr_reader :visited
+
       def initialize(tag_name, text, tokens)
         super
+        @visited = false
+        parse_args(text)
+      end
+
+      def parse_args(args_str)
+        case args_str.strip
+        when ""
+          return
+        when "once"
+          set_once
+        else
+          raise(
+            ArgumentError,
+            "Arguments passed to pry tag could not be recognized: #{args_str}",
+          )
+        end
+      end
+
+      def set_once
+        @once = true
       end
 
       def render(context)
-        binding.pry
+        binding.pry unless once && visited
+        @visited = true
         ""
       end
     end

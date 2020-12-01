@@ -26,4 +26,17 @@ RSpec.describe "Pry tag" do
 
     expect(Pry).to have_received(:start).exactly(5).times
   end
+
+  example "using with 'once' option" do
+    render_template(<<~LIQUID, {"loop_iterations" => [1, 2, 3, 4, 5]})
+      {% pry once %} (1st call)
+      {% pry once %} (2nd call)
+
+      {% for i in loop_iterations %}
+        {% pry once %} (another five calls)
+      {% endfor %}
+    LIQUID
+
+    expect(Pry).to have_received(:start).exactly(3).times
+  end
 end
