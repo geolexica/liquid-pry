@@ -13,7 +13,7 @@ Gem::Specification.new do |spec|
 
   all_files_in_git = Dir.chdir(__dir__) { `git ls-files -z`.split("\x0") }
 
-  spec.files         = all_files_in_git.reject { |f| f.match(%r{^(test|spec|features)/}) }
+  spec.files         = all_files_in_git.reject { |f| f.match(%r{^(test|spec|features|.github)/}) }
   spec.executables   = all_files_in_git.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.bindir        = "exe"
   spec.require_paths = ["lib"]
