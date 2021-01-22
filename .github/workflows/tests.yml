@@ -1,0 +1,32 @@
+name: Tests
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    name: Liquid ${{ matrix.liquid }} on Ruby ${{ matrix.ruby }}
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        liquid: [ "4.0", "5.0" ]
+        ruby: [ "2.5", "2.6", "2.7", "3.0" ]
+
+        exclude:
+          - { ruby: "3.0", liquid: "3.8" } # incompatible
+
+    env:
+      BUNDLE_GEMFILE: .github/test.gemfile
+      LIQUID_VERSION: ${{ matrix.liquid }}
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+          bundler-cache: true
+
+      - name: Run tests
+        run: bundle exec rspec
