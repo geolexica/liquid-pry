@@ -1,7 +1,7 @@
 # (c) Copyright 2020 Ribose Inc.
 #
 
-module Jekyll
+module Liquid
   module Pry
     # +pry+ filter hooks Pry into filter chain in a Liquid template.  User can
     # inspect or modify filter input and rendering context via convenient
@@ -24,4 +24,4 @@ module Jekyll
   end
 end
 
-Liquid::Template.register_filter(Jekyll::Pry::Filter)
+Liquid::Template.register_filter(Liquid::Pry::Filter)

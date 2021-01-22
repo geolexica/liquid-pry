@@ -9,7 +9,7 @@ require "pry"
 require_relative "pry/filter"
 require_relative "pry/tag"
 
-module Jekyll
+module Liquid
   module Pry
   end
 end

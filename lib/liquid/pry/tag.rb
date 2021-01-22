@@ -1,7 +1,7 @@
 # (c) Copyright 2020 Ribose Inc.
 #
 
-module Jekyll
+module Liquid
   module Pry
     # Interrupts rendering, allowing user to inspect or modify the context.
     #
@@ -44,4 +44,4 @@ module Jekyll
   end
 end
 
-Liquid::Template.register_tag("pry", Jekyll::Pry::Tag)
+Liquid::Template.register_tag("pry", Liquid::Pry::Tag)

@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-# Specify your gem's dependencies in jekyll-pry.gemspec
+# Specify your gem's dependencies in liquid-pry.gemspec
 gemspec
 
 gem "rake", "~> 12.0"

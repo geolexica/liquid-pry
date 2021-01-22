@@ -2,7 +2,7 @@
 #
 
 require "bundler/setup"
-require "jekyll/pry"
+require "liquid/pry"
 
 Dir[File.expand_path "support/**/*.rb", __dir__].sort.each { |f| require f }
 

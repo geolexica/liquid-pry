@@ -1,13 +1,13 @@
-require_relative 'lib/jekyll/pry/version'
+require_relative 'lib/liquid/pry/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "jekyll-pry"
-  spec.version       = Jekyll::Pry::VERSION
+  spec.name          = "liquid-pry"
+  spec.version       = Liquid::Pry::VERSION
   spec.authors       = ["Ribose Inc."]
   spec.email         = ["open.source@ribose.com"]
 
   spec.summary       = "Brings Pry to Liquid templates."
-  spec.homepage      = "https://github.com/riboseinc/jekyll-pry"
+  spec.homepage      = "https://github.com/riboseinc/liquid-pry"
   spec.license       = "MIT"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
 
