@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
   spec.bindir        = "exe"
   spec.require_paths = ["lib"]
 
-  spec.add_runtime_dependency("jekyll")
+  spec.add_runtime_dependency("liquid")
   spec.add_runtime_dependency("pry")
 
   spec.add_development_dependency("rspec", "~> 3.9")
