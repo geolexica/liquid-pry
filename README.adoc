@@ -1,55 +1,119 @@
-== Liquid::Pry
+= Liquid::Pry
 
-Welcome to your new gem! In this directory, you’ll find the files you
-need to be able to package up your Ruby library into a gem. Put your
-Ruby code in the file `lib/jekyll/pry`. To experiment with that code,
-run `bin/console` for an interactive prompt.
+:jekyll: https://jekyllrb.com/
+:jekyll_plugin_install: https://jekyllrb.com/docs/plugins/installation/
+:pry: https://pry.github.io/
+:ribose: https://www.ribose.com
 
-TODO: Delete this and the text above, and describe your gem
+[quote, Pry home page]
+Pry is a runtime developer console with powerful introspection capabilities.
 
-=== Installation
+Liquid::Pry brings {pry}[Pry] to Liquid templates and to Jekyll-powered sites.
 
-Add this line to your application’s Gemfile:
+== Installation
 
-[source,ruby]
+=== Without Jekyll
+
+Add following to the `Gemfile`:
+
 ----
-gem 'jekyll-pry'
+gem "liquid-pry"
 ----
 
-And then execute:
+=== With Jekyll
 
-....
-$ bundle install
-....
+If you want to integrate Liquid::Pry with Jekyll, it's probably the easiest
+to add following to the `Gemfile`, so that Jekyll will automatically load and
+enable Liquid::Pry:
 
-Or install it yourself as:
+----
+group :jekyll_plugins do
+  gem "liquid-pry"
+end
+----
 
-....
-$ gem install jekyll-pry
-....
+For other options, read {jekyll_plugin_install}[Jekyll documentation].
 
-=== Usage
+== Usage
 
-TODO: Write usage instructions here
+This gem provides a Liquid filter and a Liquid tag.
 
-=== Development
+=== Filter
 
-After checking out the repo, run `bin/setup` to install dependencies.
-Then, run `rake spec` to run the tests. You can also run `bin/console`
-for an interactive prompt that will allow you to experiment.
+The `pry` filter hooks Pry into filter chain in a Liquid template, helping user
+to debug Jekyll's front matter or any other data available in given template.
+For example following could be used to debug `page.title`:
 
-To install this gem onto your local machine, run
-`bundle exec rake install`. To release a new version, update the version
-number in `version.rb`, and then run `bundle exec rake release`, which
-will create a git tag for the version, push git commits and tags, and
-push the `.gem` file to https://rubygems.org[rubygems.org].
+----
+You are on page {{ page.title | pry }}.
+----
 
-=== Contributing
+When Liquid renderer encounters `pry` filter, then Pry console is launched.
+A convenience local variable named `input` is defined, which contains filter
+input (value of `page.title` in above example), allowing site developer to
+inspect or alter that value.  Another local variable `context` provides access
+to rendering context.
 
-Bug reports and pull requests are welcome on GitHub at
-https://github.com/[USERNAME]/jekyll-pry.
+The filter returns its input, hence it does not affect rendered page.  Also, it
+can be placed anywhere in the filter chain, not necessarily at the end.
+For example, in a following example `pry` filter is placed before `upcase`,
+allowing user to inspect `page.title` value before the `upcase` filter is
+applied.
 
-=== License
+----
+You are on page {{ page.title | pry | upcase }}.
+----
+
+However, if user modify the value of `input` variable, then modified version is
+returned.  This may be used for experimenting.
+
+The `pry` filter is typically more useful than the `pry` tag, especially for
+novice users.
+
+=== Tag
+
+The `pry` tag interrupts Liquid rendering, allowing user to inspect or modify
+the rendering context.  For example:
+
+----
+{% pry %}
+----
+
+When Liquid renderer encounters `pry` tag, then Pry console is launched
+and rendering context is available via `context` local variable.
+
+==== Using with `once` option
+
+If `pry` tag is supplied with `once` option, then Pry console is launched only
+for the first time that tag is encountered on given page.  In following example:
+
+----
+{% for product in collection.products %}
+  {% pry once %}
+  {{ product.title }}
+{% endfor %}
+----
+
+Pry will be launched only once, no matter if `collection.products` contains one
+item or a hundred.
+
+Still, in following example Pry will be launched twice, because `pry` tag is
+placed that many times in the template:
+
+----
+{% pry once %}
+{% pry once %}
+----
+
+=== Using Pry console
+
+See {pry}[Pry documentation].
+
+== Credits
+
+This gem is developed, maintained and funded by {ribose}[Ribose Inc.]
+
+== License
 
 The gem is available as open source under the terms of the
 https://opensource.org/licenses/MIT[MIT License].
