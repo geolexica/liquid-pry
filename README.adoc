@@ -117,3 +117,14 @@ This gem is developed, maintained and funded by {ribose}[Ribose Inc.]
 
 The gem is available as open source under the terms of the
 https://opensource.org/licenses/MIT[MIT License].
+
+== See also
+
+This gem is tiny but quite comprehensive.  However, there are some other ones
+you may want to try:
+
+- https://github.com/gemfarmer/jekyll-debug[jekyll-debug]
+- https://github.com/zhongxiang117/jekyll-liquid-debug[jekyll-liquid-debug]
+  (a very different approach)
+- https://github.com/octopress/debugger[octopress-debugger]
+  (seems unmaintained as of Jan 2021)
