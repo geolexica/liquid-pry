@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["open.source@ribose.com"]
 
   spec.summary       = "Brings Pry to Liquid templates."
-  spec.homepage      = "https://github.com/riboseinc/liquid-pry"
+  spec.homepage      = "https://github.com/geolexica/liquid-pry"
   spec.license       = "MIT"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
 
