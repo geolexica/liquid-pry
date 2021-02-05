@@ -5,8 +5,14 @@
 :pry: https://pry.github.io/
 :ribose: https://www.ribose.com
 
+ifndef::env-github[]
 [quote, Pry home page]
 Pry is a runtime developer console with powerful introspection capabilities.
+endif::[]
+ifdef::env-github[]
+“Pry is a runtime developer console with powerful introspection capabilities.”
+-- Pry home page
+endif::[]
 
 Liquid::Pry brings {pry}[Pry] to Liquid templates and to Jekyll-powered sites.
 
