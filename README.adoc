@@ -5,6 +5,13 @@
 :pry: https://pry.github.io/
 :ribose: https://www.ribose.com
 
+ifdef::env-github[]
+image:https://img.shields.io/gem/v/liquid-pry?style=for-the-badge[
+  Latest Version, link="https://rubygems.org/gems/liquid-pry"]
+image:https://img.shields.io/github/workflow/status/geolexica/liquid-pry/Tests/master?style=for-the-badge[
+  Build Status, link="https://github.com/geolexica/liquid-pry/actions?workflow=tests"]
+endif::[]
+
 ifndef::env-github[]
 [quote, Pry home page]
 Pry is a runtime developer console with powerful introspection capabilities.
